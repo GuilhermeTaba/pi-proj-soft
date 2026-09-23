@@ -33,7 +33,7 @@ public class ProdutoControllerTests {
 
 
         MvcResult result = mockMvc.perform(
-                        post("/cursos")
+                        post("/produtos")
                                 .contentType("application/json")
                                 .content(objectMapper.writeValueAsString(produto)))
                 .andExpect(status().isCreated())
