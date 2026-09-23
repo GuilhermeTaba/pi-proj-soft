@@ -27,4 +27,15 @@ public class Curso {
     private Integer cargaHoraria;
     private Boolean deletado = false;
     private LocalDateTime dataCriacao;
+
+    public static Curso fromDto(CursoDTO dto) {
+        Curso curso = new Curso();
+        curso.setNome(dto.getNome());
+        curso.setDescricao(dto.getDescricao());
+        curso.setInstrutor(dto.getInstrutor());
+        curso.setCargaHoraria(dto.getCargaHoraria());
+        curso.setDeletado(false);
+        curso.setDataCriacao(LocalDateTime.now());
+        return curso;
+    }
 }

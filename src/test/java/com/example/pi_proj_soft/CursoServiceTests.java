@@ -51,31 +51,30 @@ public class CursoServiceTests {
 
     @Test
     public void test_shouldSetDeletadoFalseAndDataCriacaoWhenCallCriar() {
-        Curso curso = new Curso();
-        curso.setNome("Curso");
-        curso.setDeletado(true);
+        CursoDTO dto = new CursoDTO();
+        dto.setNome("Curso");
 
-        Mockito.when(cursoRepository.save(curso)).thenReturn(curso);
+        Mockito.when(cursoRepository.save(Mockito.any(Curso.class))).thenAnswer(invocation -> invocation.getArgument(0));
 
-        Curso resultado = cursoService.criar(curso);
+        Curso resultado = cursoService.criar(dto);
         Assertions.assertFalse(resultado.getDeletado());
         Assertions.assertNotNull(resultado.getDataCriacao());
     }
 
     @Test
     public void test_shouldReturnCursoSalvoWhenCallCriar() {
-        Curso curso = new Curso();
-        curso.setNome("Curso");
+        CursoDTO dto = new CursoDTO();
+        dto.setNome("Curso");
 
         Curso salvo = new Curso();
         salvo.setId(1L);
         salvo.setNome("Curso");
 
-        Mockito.when(cursoRepository.save(curso)).thenReturn(salvo);
+        Mockito.when(cursoRepository.save(Mockito.any(Curso.class))).thenReturn(salvo);
 
-        Curso resultado = cursoService.criar(curso);
+        Curso resultado = cursoService.criar(dto);
         Assertions.assertEquals(1L, resultado.getId());
-        Mockito.verify(cursoRepository).save(curso);
+        Mockito.verify(cursoRepository).save(Mockito.any(Curso.class));
     }
 }
 

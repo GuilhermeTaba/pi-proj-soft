@@ -26,7 +26,7 @@ public class CursoControllerTests {
 
     @Test
     void test_shouldCreateCurso() throws Exception {
-        Curso curso = new Curso();
+        CursoDTO curso = new CursoDTO();
         curso.setDescricao("teste");
         curso.setInstrutor("Osvaldo");
         curso.setCargaHoraria(10);
@@ -50,7 +50,7 @@ public class CursoControllerTests {
     }
     @Test
     void test_shouldListarCursos() throws Exception {
-        Curso curso = new Curso();
+        CursoDTO curso = new CursoDTO();
         curso.setDescricao("teste");
         curso.setInstrutor("Osvaldo");
         curso.setCargaHoraria(10);
@@ -62,7 +62,7 @@ public class CursoControllerTests {
                                 .content(objectMapper.writeValueAsString(curso)))
                 .andExpect(status().isCreated());
 
-        Curso outro = new Curso();
+        CursoDTO outro = new CursoDTO();
         outro.setDescricao("teste");
         outro.setInstrutor("Osvaldo");
         outro.setCargaHoraria(10);
@@ -94,7 +94,7 @@ public class CursoControllerTests {
 
 // @Test
 // void test_shouldDeletarCurso() throws Exception {
-//     Curso curso = new Curso();
+//     CursoDTO curso = new CursoDTO();
 //     curso.setDescricao("teste");
 //     curso.setInstrutor("Osvaldo");
 //     curso.setCargaHoraria(10);

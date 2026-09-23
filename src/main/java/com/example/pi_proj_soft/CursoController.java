@@ -24,8 +24,8 @@ public class CursoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Curso criar(@RequestBody @Valid Curso curso) {
-        return cursoService.criar(curso);
+    public Curso criar(@RequestBody @Valid CursoDTO dto) {
+        return cursoService.criar(dto);
     }
 }
 // CursoController.java

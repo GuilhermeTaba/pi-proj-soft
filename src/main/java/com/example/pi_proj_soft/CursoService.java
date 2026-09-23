@@ -1,7 +1,6 @@
 package com.example.pi_proj_soft;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -22,9 +21,8 @@ public class CursoService {
     }
 
 
-    public Curso criar(Curso curso) {
-        curso.setDeletado(false);
-        curso.setDataCriacao(LocalDateTime.now());
+    public Curso criar(CursoDTO dto) {
+        Curso curso = Curso.fromDto(dto);
         return cursoRepository.save(curso);
     }
 }
